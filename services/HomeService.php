@@ -15,18 +15,19 @@ class HomeService
 
         foreach ($collections as $collection) {
             $productsArray = (new ProductRepository)->getWhereAllObject('collection_id', $collection->id);
-            $products = [];
+
+            $collectionArray[] = $collection->name;
             foreach ($productsArray as $product) {
+                $productItem = [];
                 $productItem['id'] = $product->id;
                 $productItem['name'] = $product->name;
                 $productItem['price'] = $product->price;
-                $products[] = $productItem;
+                $collectionArray[] = $productItem;
             }
 
-            $collectionItem['name'] = $collection->name;
-            $collectionItem['products'] = $products;
-
-            $collectionArray[] = $collectionItem;
+            if (count($collectionArray) % 3 === 2) {
+                $collectionArray[] = '';
+            }
         };
 
         return $collectionArray;
