@@ -1,0 +1,15 @@
+{% extends 'layouts/app.twig' %}
+
+{% block body %}
+    <main class="main">
+        <div class="container wrapper">
+
+            <div class="product">
+                <p>Название коллекции: {{ collection.name }}</p>
+                <p>Название товара: {{ product.name }}</p>
+                <p>Стоимость: {{ product.price }} рублей</p>
+            </div>
+
+        </div>
+    </main>
+{% endblock %}

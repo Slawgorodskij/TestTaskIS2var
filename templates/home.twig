@@ -1,0 +1,26 @@
+{% extends 'layouts/app.twig' %}
+
+{% block body %}
+    <main class="main">
+        <div class="container wrapper">
+            {% for collection in collections %}
+
+                <div class="collection">
+                    <div class="collection__item">
+                        <p>{{ collection.name }}</p>
+                    </div>
+
+                    {% for product in collection.products %}
+
+                        <a class="collection__item" href="/product/card/?id={{ product.id }}">
+                            <p>{{ product.name }}</p>
+                            <p>{{ product.price }} рублей</p>
+                        </a>
+
+                    {% endfor %}
+                </div>
+
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
